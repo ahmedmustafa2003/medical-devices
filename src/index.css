@@ -1,0 +1,171 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+.home {
+  background-color: #fff;
+  color: #333;
+  line-height: 1.6;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navLinks {
+    display: none;
+  }
+
+  .navLinks.active {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .navLinks.active li {
+    margin: 10px 0;
+  }
+
+  .hamburger {
+    display: block;
+  }
+}
+
+/* Intro Animation Styles */
+.intro-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.intro-content {
+  text-align: center;
+}
+
+/* Message container */
+.intro-message {
+  font-size: 2.5rem;
+  font-weight: 500;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  color: white;
+}
+
+/* Individual word styling */
+.intro-word {
+  opacity: 0;
+  display: inline-block;
+  transform: translateY(20px);
+  transition:
+    opacity 0.8s ease-out,
+    transform 0.8s ease-out;
+}
+
+/* Visible word animation */
+.word-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Logo container */
+.intro-logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  opacity: 0;
+  animation: fadeInUp 1.5s ease-out forwards;
+}
+
+/* Logo styling */
+.intro-logo {
+  width: auto;
+  height: auto;
+}
+
+/* Subtitle styling */
+.intro-subtitle {
+  font-size: 2rem;
+  color: white;
+  opacity: 0;
+  animation: fadeIn 0.5s ease-out 0.75s forwards;
+  font-weight: 500;
+}
+
+/* Final fade out animation */
+.fade-out {
+  animation: fadeOut 1.5s ease-out forwards;
+}
+
+.fade-out .intro-logo-container,
+.fade-out .intro-subtitle {
+  animation: none;
+  opacity: 1;
+}
+
+/* Keyframes for animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out forwards;
+}
