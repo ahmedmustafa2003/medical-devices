@@ -57,33 +57,6 @@ button:hover .shine-effect {
   margin: 0 auto;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .navLinks {
-    display: none;
-  }
-
-  .navLinks.active {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 70px;
-    left: 0;
-    width: 100%;
-    background-color: #fff;
-    padding: 20px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  }
-
-  .navLinks.active li {
-    margin: 10px 0;
-  }
-
-  .hamburger {
-    display: block;
-  }
-}
-
 /* Intro Animation Styles */
 .intro-container {
   position: fixed;
