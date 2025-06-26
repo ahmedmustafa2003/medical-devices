@@ -19,9 +19,26 @@ import Sidebar from "../components/Sidebar";
 
 export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isScrolledPastHero, setIsScrolledPastHero] = useState(false);
+  const [showBorder, setShowBorder] = useState(false);
 
   useEffect(() => {
     setIsLoaded(true);
+
+    const handleScroll = () => {
+      // Check for waves section
+      const wavesSection = document.querySelector(".relative.w-full");
+      if (wavesSection) {
+        const wavesPosition = wavesSection.getBoundingClientRect().top;
+        setIsScrolledPastHero(wavesPosition < 0);
+      }
+
+      // Check for scroll position to show border
+      setShowBorder(window.scrollY > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
@@ -46,41 +63,52 @@ export default function Home() {
         </video>
       </div>
 
-      {/* Logo in top left corner */}
-      <div className="fixed top-6 left-6 z-30">
-        <img
-          src={logo}
-          alt="Medical Devices Logo"
-          className="h-12 w-auto object-contain drop-shadow-lg"
-        />
+      {/* Header container with border glow effect */}
+      <div
+        className={`fixed top-4 left-1/2 transform -translate-x-1/2 z-30 transition-all duration-500
+    flex items-center justify-between px-6 py-4 rounded-full
+    ${
+      showBorder
+        ? "w-[80%] bg-white backdrop-blur-md shadow-[0_0_20px_10px_rgba(185,28,28,0.7)]"
+        : "w-full bg-transparent"
+    }`}
+      >
+        {/* Logo on the left */}
+        <div className="flex items-center">
+          <img src={logo} alt="Company Logo" className="h-12 w-auto" />
+        </div>
+        <Navbar />
+        {/* Company Name on the right */}
+        <h2
+          className={`text-md md:text-lg ${
+            isScrolledPastHero ? "text-black" : "text-white"
+          } transition-colors duration-500`}
+        >
+          Medical Devices (Pvt) LTD
+        </h2>
       </div>
 
       {/* Floating Sidebar */}
       <Sidebar />
 
       {/* Main Content */}
-      <div className="relative z-20">
-        <Navbar />
-
-        {/* Hero Section - takes full viewport */}
+      <div className="relative z-20 pt-16">
         <section
           id="home"
           className="h-screen w-full flex items-center justify-center"
         >
           <HeroSection />
         </section>
-
         {/* Waves positioned at bottom of hero section */}
         <div className="relative w-full">
           <div className="absolute bottom-0 left-0 w-full pointer-events-none z-10">
             <Waves />
           </div>
         </div>
-
         {/* Content below hero section */}
         <div className="relative bg-white">
           {/* About Section */}
-          <section id="about" className="py-20 relative z-20 bg-white">
+          <section id="aboutus" className="py-20 relative z-20 bg-white">
             <AboutSection />
           </section>
 

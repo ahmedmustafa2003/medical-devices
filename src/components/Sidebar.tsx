@@ -14,7 +14,7 @@ export default function FloatingSidebar() {
       }}
     >
       <div
-        className="flex flex-col gap-4 p-4 backdrop-blur-lg rounded-full shadow-lg transition-all duration-300 hover:shadow-[0_0_20px_3px_rgba(255,255,255,0.7)]"
+        className="flex flex-col gap-4 p-2 backdrop-blur-lg rounded-full shadow-lg transition-all duration-300 hover:shadow-[0_0_20px_3px_rgba(255,255,255,0.7)]"
         style={{
           backgroundImage: "url('/section2_bg.jpeg')", // ✅ Use image from /public
           backgroundSize: "cover",
@@ -23,19 +23,19 @@ export default function FloatingSidebar() {
       >
         <a
           href="#location"
-          className="p-3 rounded-full hover:bg-white/10 hover:shadow-md hover:bg-black/20 transition-all duration-200"
+          className="p-3 rounded-full text-black hover:bg-black/20 hover:shadow-md hover:shadow-white/70 transition-all duration-200 whitespace-nowrap"
         >
           <MapPinIcon className="h-6 w-6 text-black" />
         </a>
         <a
           href="tel:+1234567890"
-          className="p-3 rounded-full hover:bg-white/10 hover:shadow-md hover:bg-black/20 transition-all duration-200"
+          className="p-3 rounded-full text-black hover:bg-black/20 hover:shadow-md hover:shadow-white/70 transition-all duration-200 whitespace-nowrap"
         >
           <PhoneIcon className="h-6 w-6 text-black" />
         </a>
         <a
           href="mailto:contact@medicaldevices.com"
-          className="p-3 rounded-full hover:bg-white/10 hover:shadow-md hover:bg-black/20 transition-all duration-200"
+          className="p-3 rounded-full text-black hover:bg-black/20 hover:shadow-md hover:shadow-white/70 transition-all duration-200 whitespace-nowrap"
         >
           <EnvelopeIcon className="h-6 w-6 text-black" />
         </a>

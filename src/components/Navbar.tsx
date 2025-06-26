@@ -13,9 +13,16 @@ export default function Navbar() {
     { name: "Contact Us", icon: ChatBubbleBottomCenterTextIcon },
   ];
 
+  const handleScroll = (id: string) => {
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <header
-      className="fixed top-4 w-full z-30 flex justify-center px-4"
+      className="fixed top-3 w-full flex justify-center px-4"
       style={{
         animation: "slideDown 1s ease-out forwards",
         opacity: 0,
@@ -30,16 +37,19 @@ export default function Navbar() {
         }}
       >
         <nav className="flex gap-2 sm:gap-4">
-          {navItems.map((item) => (
-            <a
-              key={item.name}
-              href={`#${item.name.toLowerCase().replace(/ /g, "")}`}
-              className="flex items-center px-3 sm:px-4 py-1.5 text-sm rounded-full text-black hover:bg-black/20 hover:shadow-md hover:shadow-white/70 transition-all duration-200 whitespace-nowrap"
-            >
-              <item.icon className="h-5 w-5 mr-1.5 text-black" />
-              {item.name}
-            </a>
-          ))}
+          {navItems.map((item) => {
+            const id = item.name.toLowerCase().replace(/ /g, "");
+            return (
+              <button
+                key={item.name}
+                onClick={() => handleScroll(id)}
+                className="flex items-center px-3 sm:px-4 py-1.5 text-sm rounded-full text-black hover:bg-black/20 hover:shadow-md hover:shadow-white/70 transition-all duration-200 whitespace-nowrap"
+              >
+                <item.icon className="h-5 w-5 mr-1.5 text-black" />
+                {item.name}
+              </button>
+            );
+          })}
         </nav>
       </div>
 
