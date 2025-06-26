@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../index.css";
 import Logo from "../assets/images/logo_cropped.png";
+import bgVideo from "../assets/videos/intro video.mp4";
 
 interface IntroAnimationProps {
   onComplete: () => void;
@@ -17,32 +18,24 @@ const IntroAnimation = ({ onComplete }: IntroAnimationProps) => {
   const words = message.split(" ");
 
   useEffect(() => {
-    // ==============================================
-    // WORD-BY-WORD ANIMATION CONTROL
-    // ==============================================
-    // Each word appears every 300ms (adjust this value to change speed)
     const wordTimer = setInterval(() => {
       setCurrentWord((prev) => {
         if (prev >= words.length - 1) {
           clearInterval(wordTimer);
-          // After last word, wait 1s then show logo
           setTimeout(() => setShowLogo(true), 1000);
           return prev;
         }
         return prev + 1;
       });
-    }, 300); // <-- THIS CONTROLS DELAY BETWEEN WORDS
-    // ==============================================
+    }, 300);
 
     return () => clearInterval(wordTimer);
   }, []);
 
   useEffect(() => {
     if (showLogo) {
-      // After logo shows, wait 3s then start fade out
       const transitionTimer = setTimeout(() => {
         setStartTransition(true);
-        // After fade out completes, go to homepage
         setTimeout(() => {
           onComplete();
           navigate("/home");
@@ -55,6 +48,18 @@ const IntroAnimation = ({ onComplete }: IntroAnimationProps) => {
 
   return (
     <div className={`intro-container ${startTransition ? "fade-out" : ""}`}>
+      {/* Background video */}
+      <video
+        className="intro-bg-video"
+        src={bgVideo}
+        autoPlay
+        loop
+        muted
+        playsInline
+      />
+      {/* Optional dark overlay */}
+      <div className="intro-overlay" />
+
       <div className="intro-content">
         {!showLogo ? (
           <div className="intro-message">

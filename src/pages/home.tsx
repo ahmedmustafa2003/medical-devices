@@ -15,6 +15,7 @@ import { PortfolioSection } from "../components/PortfolioSection";
 import { TestimonialsSection } from "../components/TestimonialsSection";
 import { TeamSection } from "../components/TeamSection";
 import { ContactSection } from "../components/ContactSection";
+import Sidebar from "../components/Sidebar";
 
 export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -43,15 +44,6 @@ export default function Home() {
           <source src={videoSrc} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-
-        {/* Gradient overlay */}
-        {/* <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(to bottom, rgba(255,255,255,0.2) 0%, rgba(0,0,0,0.6) 50%, rgba(0,0,0,0.9) 100%)",
-          }}
-        /> */}
       </div>
 
       {/* Logo in top left corner */}
@@ -64,34 +56,7 @@ export default function Home() {
       </div>
 
       {/* Floating Sidebar */}
-      <div
-        className="fixed left-6 top-1/2 transform -translate-y-1/2 z-30"
-        style={{
-          animation: "slideInLeft 1s ease-out forwards",
-          opacity: 0,
-        }}
-      >
-        <div className="flex flex-col gap-4 p-4 bg-gray-700/40 backdrop-blur-lg rounded-full shadow-lg transition-all duration-300 hover:shadow-[0_0_20px_3px_rgba(255,255,255,0.7)]">
-          <a
-            href="#location"
-            className="p-3 rounded-full hover:bg-white/10 hover:shadow-md hover:shadow-white/70 transition-all duration-200"
-          >
-            <MapPinIcon className="h-6 w-6 text-white" />
-          </a>
-          <a
-            href="tel:+1234567890"
-            className="p-3 rounded-full hover:bg-white/10 hover:shadow-md hover:shadow-white/70 transition-all duration-200"
-          >
-            <PhoneIcon className="h-6 w-6 text-white" />
-          </a>
-          <a
-            href="mailto:contact@medicaldevices.com"
-            className="p-3 rounded-full hover:bg-white/10 hover:shadow-md hover:shadow-white/70 transition-all duration-200"
-          >
-            <EnvelopeIcon className="h-6 w-6 text-white" />
-          </a>
-        </div>
-      </div>
+      <Sidebar />
 
       {/* Main Content */}
       <div className="relative z-20">

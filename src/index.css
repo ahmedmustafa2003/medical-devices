@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Slide Down Animation */
 .animate-slideDown {
   animation: slideDown 0.3s ease-out forwards;
 }
@@ -17,6 +18,7 @@
   }
 }
 
+/* Shine Effect on Buttons */
 .shine-effect {
   position: absolute;
   top: 0;
@@ -37,7 +39,7 @@ button:hover .shine-effect {
   transition: left 0.7s ease-in-out;
 }
 
-/* Reset and Base Styles */
+/* Base Reset */
 * {
   margin: 0;
   padding: 0;
@@ -57,26 +59,61 @@ button:hover .shine-effect {
   margin: 0 auto;
 }
 
-/* Intro Animation Styles */
+/* ========================== */
+/* INTRO ANIMATION SECTION   */
+/* ========================== */
 .intro-container {
   position: fixed;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
+  z-index: 1000;
+  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: black;
-  z-index: 1000;
-  overflow: hidden;
+  transition: opacity 1.5s ease;
 }
 
+/* Background Video */
+.intro-bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  animation: fadeInVideo 2s ease-out forwards;
+}
+
+/* Fade out video on container fade-out */
+.fade-out .intro-bg-video {
+  animation: fadeOutVideo 2s ease forwards;
+}
+
+/* Optional dark overlay on top of video */
+.intro-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* adjust for contrast */
+}
+
+/* Content Layer */
 .intro-content {
+  position: relative;
+  z-index: 2;
   text-align: center;
+  color: white;
 }
 
-/* Message container */
+/* Word-by-word animation */
 .intro-message {
   font-size: 2.5rem;
   font-weight: 500;
@@ -85,7 +122,6 @@ button:hover .shine-effect {
   color: white;
 }
 
-/* Individual word styling */
 .intro-word {
   opacity: 0;
   display: inline-block;
@@ -95,13 +131,12 @@ button:hover .shine-effect {
     transform 0.8s ease-out;
 }
 
-/* Visible word animation */
 .word-visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Logo container */
+/* Logo Reveal */
 .intro-logo-container {
   display: flex;
   flex-direction: column;
@@ -111,13 +146,11 @@ button:hover .shine-effect {
   animation: fadeInUp 1.5s ease-out forwards;
 }
 
-/* Logo styling */
 .intro-logo {
   width: auto;
   height: auto;
 }
 
-/* Subtitle styling */
 .intro-subtitle {
   font-size: 2rem;
   color: white;
@@ -126,7 +159,7 @@ button:hover .shine-effect {
   font-weight: 500;
 }
 
-/* Final fade out animation */
+/* Fade Out for Whole Intro */
 .fade-out {
   animation: fadeOut 1.5s ease-out forwards;
 }
@@ -137,7 +170,7 @@ button:hover .shine-effect {
   opacity: 1;
 }
 
-/* Keyframes for animations */
+/* Keyframes */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -152,9 +185,11 @@ button:hover .shine-effect {
 @keyframes fadeIn {
   from {
     opacity: 0;
+    transform: translateY(-10px);
   }
   to {
     opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -164,16 +199,29 @@ button:hover .shine-effect {
   }
 }
 
-@keyframes fadeIn {
+/* 🎬 New: Fade In and Out for Video */
+@keyframes fadeInVideo {
   from {
     opacity: 0;
-    transform: translateY(-10px);
+    transform: scale(1.02);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: scale(1);
   }
 }
+
+@keyframes fadeOutVideo {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(1.02);
+  }
+}
+
 .animate-fadeIn {
   animation: fadeIn 0.3s ease-out forwards;
 }
