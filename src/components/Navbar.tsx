@@ -4,6 +4,7 @@ import {
   ShoppingBagIcon,
   ChatBubbleBottomCenterTextIcon,
 } from "@heroicons/react/24/outline";
+import logo from "../assets/images/logo_cropped.png"; // Adjust if needed
 
 export default function Navbar() {
   const navItems = [
@@ -21,36 +22,47 @@ export default function Navbar() {
   };
 
   return (
-    <header
-      className="fixed top-3 w-full flex justify-center px-4"
+    <div
+      className="relative w-full flex items-center justify-between px-6 gap-6 py-6"
       style={{
         animation: "slideDown 1s ease-out forwards",
         opacity: 0,
       }}
     >
+      {/* Left: Logo */}
+      <div className="flex-shrink-0">
+        <img src={logo} alt="Company Logo" className="h-12 w-auto" />
+      </div>
+
+      {/* Center: Button Island - absolutely centered */}
       <div
-        className="flex items-center justify-center w-full max-w-xl px-3 py-3 rounded-full shadow-lg transition-all duration-300 hover:shadow-[0_0_20px_3px_rgba(255,255,255,0.7)] backdrop-blur-lg text-black font-medium"
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full shadow-lg backdrop-blur-lg font-medium border border-white/30 px-4 py-2 transition-shadow duration-300 hover:shadow-[0_0_20px_6px_rgba(255,255,255,0.5)]"
         style={{
           backgroundImage: `url('/section2_bg.jpeg')`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
       >
-        <nav className="flex gap-2 sm:gap-4">
+        <nav className="flex gap-4">
           {navItems.map((item) => {
             const id = item.name.toLowerCase().replace(/ /g, "");
             return (
               <button
                 key={item.name}
                 onClick={() => handleScroll(id)}
-                className="flex items-center px-3 sm:px-4 py-1.5 text-sm rounded-full text-black hover:bg-black/20 hover:shadow-md hover:shadow-white/70 transition-all duration-200 whitespace-nowrap"
+                className="flex items-center gap-2 px-5 py-2 rounded-full text-sm text-black bg-white/20 hover:bg-black/20 hover:shadow-md hover:shadow-white/70 transition-all duration-200"
               >
-                <item.icon className="h-5 w-5 mr-1.5 text-black" />
-                {item.name}
+                <item.icon className="h-5 w-5 text-black" />
+                <span className="whitespace-nowrap">{item.name}</span>
               </button>
             );
           })}
         </nav>
+      </div>
+
+      {/* Right: Company Name */}
+      <div className="text-white text-xl whitespace-nowrap">
+        Medical Devices (Pvt) LTD.
       </div>
 
       {/* SlideDown animation */}
@@ -68,6 +80,6 @@ export default function Navbar() {
           }
         `}
       </style>
-    </header>
+    </div>
   );
 }

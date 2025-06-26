@@ -1,5 +1,3 @@
-import { motion } from "framer-motion";
-
 export const Waves = () => (
   <>
     <div className="hero relative w-full z-10 pointer-events-none">
@@ -18,43 +16,17 @@ export const Waves = () => (
           />
         </defs>
         <g className="wave1">
-          <use xlinkHref="#wave-path" x="50" y="3" />
+          <use xlinkHref="#wave-path" x="50" y="-5" />
         </g>
         <g className="wave2">
-          <use xlinkHref="#wave-path" x="50" y="0" />
+          <use xlinkHref="#wave-path" x="50" y="-8" />
         </g>
         <g className="wave3">
-          <use xlinkHref="#wave-path" x="50" y="9" />
+          <use xlinkHref="#wave-path" x="50" y="0" />
         </g>
       </svg>
 
       {/* Content section */}
-      <div className="relative z-20 bg-white pt-10 pb-6">
-        <div className="text-left mx-36">
-          <div className="flex items-center mb-2">
-            <motion.h2
-              className="text-sm text-gray-400 mr-4"
-              initial={{ y: 50, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2, duration: 0.8 }}
-            >
-              ABOUT
-            </motion.h2>
-            {/* Horizontal bar */}
-            <div className="flex-1 h-px bg-gray-300"></div>
-          </div>
-          <motion.h1
-            className="text-2xl text-black"
-            initial={{ y: 50, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.4, duration: 0.8 }}
-          >
-            WHO WE ARE
-          </motion.h1>
-        </div>
-      </div>
     </div>
 
     <style>
@@ -66,7 +38,7 @@ export const Waves = () => (
         .hero-waves {
           display: block;
           width: 100%;
-          height: 40px;
+          height: 50px;
         }
 
         .hero .wave1 use {
