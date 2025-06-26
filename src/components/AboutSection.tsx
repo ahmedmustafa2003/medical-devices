@@ -3,33 +3,12 @@ import { motion } from "framer-motion";
 export const AboutSection = () => {
   return (
     <motion.div
-      className="container mx-auto px-6"
+      className="container mx-auto px-6 py-12 bg-gray-300 rounded-lg" // Added bg-gray-300 and py-12
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.8 }}
     >
-      <div className="text-center mb-16">
-        <motion.h2
-          className="text-4xl font-bold text-gray-800 mb-4"
-          initial={{ y: 50, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2, duration: 0.8 }}
-        >
-          ABOUT
-        </motion.h2>
-        <motion.h3
-          className="text-2xl text-blue-600 font-semibold"
-          initial={{ y: 50, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.4, duration: 0.8 }}
-        >
-          WHO WE ARE
-        </motion.h3>
-      </div>
-
       <div className="flex flex-col md:flex-row gap-12 items-center">
         <motion.div
           className="md:w-1/2"

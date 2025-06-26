@@ -8,7 +8,6 @@ import {
   PhoneIcon,
   EnvelopeIcon,
 } from "@heroicons/react/24/outline";
-import GlassBalls from "../components/GlassBalls";
 import HeroSection from "../components/HeroSection";
 import { AboutSection } from "../components/AboutSection";
 import { ServicesSection } from "../components/ServicesSection";
@@ -30,39 +29,30 @@ export default function Home() {
         opacity: isLoaded ? 1 : 0,
         transition: "opacity 1s ease-in-out",
       }}
-      className="relative w-full min-h-screen overflow-hidden bg-black"
+      className="relative w-full min-h-screen bg-black"
     >
-      {/* Video background */}
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="fixed top-0 left-0 w-full h-full object-cover z-0"
-      >
-        <source src={videoSrc} type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+      {/* Video background - only for hero section */}
+      <div className="fixed top-0 left-0 w-full h-screen overflow-hidden z-0">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover"
+        >
+          <source src={videoSrc} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
 
-      {/* Glass Balls */}
-      <GlassBalls
-        colors={[
-          "200, 240, 255", // Medical light blue
-          "230, 250, 255", // Very light blue
-          "220, 240, 250", // Soft blue
-        ]}
-        brightness={1.1}
-        count={5}
-      />
-
-      {/* Gradient overlay */}
-      <div
-        className="fixed inset-0 z-10"
-        style={{
-          background:
-            "linear-gradient(to bottom, rgba(255,255,255,0.2) 0%, rgba(0,0,0,0.6) 50%, rgba(0,0,0,0.9) 100%)",
-        }}
-      />
+        {/* Gradient overlay */}
+        {/* <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(to bottom, rgba(255,255,255,0.2) 0%, rgba(0,0,0,0.6) 50%, rgba(0,0,0,0.9) 100%)",
+          }}
+        /> */}
+      </div>
 
       {/* Logo in top left corner */}
       <div className="fixed top-6 left-6 z-30">
@@ -107,41 +97,33 @@ export default function Home() {
       <div className="relative z-20">
         <Navbar />
 
-        {/* Hero Section */}
-        {/* Hero Section */}
-        <section id="home" className="relative h-screen w-full">
+        {/* Hero Section - takes full viewport */}
+        <section
+          id="home"
+          className="h-screen w-full flex items-center justify-center"
+        >
           <HeroSection />
         </section>
 
-        {/* About Section */}
-        <section id="about" className="py-20 bg-white/90 relative">
-          <AboutSection />
-        </section>
+        {/* Waves positioned at bottom of hero section */}
+        <div className="relative w-full">
+          <div className="absolute bottom-0 left-0 w-full pointer-events-none z-10">
+            <Waves />
+          </div>
+        </div>
 
-        {/* Services Section */}
-        <section id="services" className="py-20 bg-gray-50 relative">
-          <ServicesSection />
-        </section>
+        {/* Content below hero section */}
+        <div className="relative bg-white">
+          {/* About Section */}
+          <section id="about" className="py-20 relative z-20 bg-white">
+            <AboutSection />
+          </section>
 
-        {/* Portfolio Section */}
-        <section id="portfolio" className="py-20 bg-white relative">
-          <PortfolioSection />
-        </section>
-
-        {/* Testimonials Section */}
-        <section id="testimonials" className="py-20 bg-blue-50 relative">
-          <TestimonialsSection />
-        </section>
-
-        {/* Team Section */}
-        <section id="team" className="py-20 bg-white relative">
-          <TeamSection />
-        </section>
-
-        {/* Contact Section */}
-        <section id="contact" className="py-20 bg-gray-50 relative">
-          <ContactSection />
-        </section>
+          {/* Other sections can follow here */}
+          {/* <ServicesSection /> */}
+          {/* <PortfolioSection /> */}
+          {/* etc. */}
+        </div>
       </div>
 
       {/* Animation styles */}
@@ -156,17 +138,6 @@ export default function Home() {
               transform: translateX(0) translateY(-50%);
               opacity: 1;
             }
-          }
-          @keyframes waveMove {
-            0% {
-              transform: translateX(0);
-            }
-            100% {
-              transform: translateX(-50%);
-            }
-          }
-          .animate-wave {
-            animation: waveMove 20s linear infinite;
           }
         `}
       </style>
