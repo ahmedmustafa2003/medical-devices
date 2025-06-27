@@ -7,7 +7,7 @@ import {
 export default function FloatingSidebar() {
   return (
     <div
-      className="fixed top-1/3 left-8 -translate-y-1/2"
+      className="fixed top-1/3 left-4 z-30 -translate-y-1/2"
       style={{
         animation: "slideInLeft 1s ease-out forwards",
         opacity: 0,
