@@ -225,3 +225,31 @@ button:hover .shine-effect {
 .animate-fadeIn {
   animation: fadeIn 0.3s ease-out forwards;
 }
+
+/* Red Glow Breathing (no scale) */
+@keyframes redToWhiteGlow {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 8px rgb(108, 5, 5)); /* red-600 */
+  }
+  50% {
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.9)); /* white */
+  }
+}
+
+.animate-breathe {
+  animation: redToWhiteGlow 3s ease-in-out infinite;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll-slow {
+  animation: scroll-left 40s linear infinite;
+}

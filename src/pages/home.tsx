@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 import videoSrc from "../assets/videos/Background_video.mp4";
 import Navbar from "../components/Navbar";
 import { Waves } from "../components/Waves";
-import logo from "../assets/images/logo_cropped.png";
 import HeroSection from "../components/HeroSection";
-import AboutSection from "../components/AboutSection";
 import Sidebar from "../components/Sidebar";
+import Homecontent from "../components/HomePage/Homecontent";
+import Callforinquiry from "../components/HomePage/Callforinquiry";
+import ClientTestimonials from "../components/HomePage/ClientTestimonials";
+import Sendmessage from "../components/HomePage/Sendmessage";
 
 export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -73,7 +75,21 @@ export default function Home() {
       <div className="">
         <div className="my-20"></div>
         <Waves />
-        <div className="bg-white py-16"></div>
+        <div className="bg-white py-10"></div>
+      </div>
+
+      {/* Home page content */}
+      <div>
+        <Homecontent />
+      </div>
+      <div>
+        <Callforinquiry phoneNumber={"+92523571214"} />
+      </div>
+      <div>
+        <ClientTestimonials />
+      </div>
+      <div>
+        <Sendmessage />
       </div>
     </div>
   );

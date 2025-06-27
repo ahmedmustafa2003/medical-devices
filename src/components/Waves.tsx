@@ -1,6 +1,6 @@
 export const Waves = () => (
   <>
-    <div className="hero relative w-full z-10 pointer-events-none">
+    <div className="hero relative -z-10 w-full pointer-events-none">
       {/* Waves section */}
       <svg
         className="hero-waves w-full"
